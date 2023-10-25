@@ -74,7 +74,7 @@
 														</button>
 													</div>
 													<a href="/tempSemi/product_detail.tam?it_seq_no=${imgvo.itvo.it_seq_no}" class="a_item">
-														<img src="<%= ctxPath%>/images/index/${imgvo.img_file}" class="img-fluid" />
+														<img src="<%= ctxPath%>/images/jh/index/${imgvo.img_file}" class="img-fluid" />
 														<div class="div_item_desc">
 															<div class="div_item_ingredient">${imgvo.itvo.it_ingredient}</div>
 															<div class="div_item_name">${imgvo.itvo.it_name}</div>
