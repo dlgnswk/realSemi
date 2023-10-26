@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+    String ctxPath = request.getContextPath();
+%>
+<!DOCTYPE html>
+<%-- 헤더 시작 --%>
+<html lang="ko">
+  <head>
+    <%-- Required meta tags --%>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>탬버린즈 header</title>
+    
+    <%-- Bootstrap CSS --%>
+    <link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+    
+    <%-- Font Awesome 5 Icons --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <%-- header,footer 전용 CSS --%>
+    <link rel="stylesheet" href="<%= ctxPath%>/css/jy/hearderTest.css" type="text/css">
+    
+	<%-- Optional JavaScript --%>
+    <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    
+    <%-- header,footer 전용 js --%>
+ 	<script src="<%= ctxPath%>/js/jy/headerTest/headerTest.js" type="text/javascript"></script>
+ 	
+  </head>
+  
+	<%-- 네비게이션바 시작 --%>  
+	
+	<nav class="navbar navbar-expand-lg bg-white navbar-white sticky-top " id="nv"> 
+
+	  <a class="navbar-brand" href="#"><img src="<%= ctxPath%>/images/jy/탬버린즈로고.png" /></a>
+	  
+	<%-- 사이드바 시작 --%>
+		<div id="side_bar_container">
+		<span><a class="nav-link header_footer_font" href="#"><img src="<%= ctxPath%>/images/jy/장바구니.png" style="width:16px; height:16px;"><label>0</label></a></span>
+		<div class="side_bar">	
+			<div id="mySidepanel" class="sidepanel">
+			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  <a href="#">제품보기</a>
+			  <a href="#">매장보기</a>
+			  <a href="#">마이페이지</a>
+			  <a href="#">로그인</a>
+			  <a href="#">장바구니</a>
+			</div>
+
+			<button class="openbtn" onclick="openNav()">&#9868;</button>
+		</div>
+	</div>		
+	<%-- 사이드바 끝 --%>
+
+			
+		<div id="mySidepane0" class="sidepanel collapse navbar-collapse" style="white-space:nowrap;">
+			  <ul class="navbar-nav">
+			    <li class="nav-item active">
+			      <a class="nav-link header_footer_font" href="#">제품보기</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link header_footer_font" href="#">매장보기</a>
+			    </li>
+			  </ul>
+		</div>	  
+			<div id="align-right" class="sidepanel">
+			  <ul class="navbar-nav">
+				 <li class="nav-item active">
+			      <a class="nav-link header_footer_font" href="#">마이페이지</a>
+			     </li>
+			     
+			     <li class="nav-item active">
+			      <a class="nav-link header_footer_font" href="#">로그인</a>
+			     </li>
+			  </ul>
+			  <span><a class="nav-link header_footer_font" href="#"><img src="<%= ctxPath%>/images/jy/장바구니.png" style="width:16px; height:16px;"><label>0</label></a></span>
+			</div> 
+	</nav>
+	<%-- 네비게이션바 끝 --%>
+	
+<%-- 헤더 끝 --%>	
