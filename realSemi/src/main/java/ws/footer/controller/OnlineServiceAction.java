@@ -3,7 +3,7 @@ package ws.footer.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ws.common.controller.AbstractController;
+import common.controller.AbstractController;
 
 public class OnlineServiceAction extends AbstractController {
 

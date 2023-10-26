@@ -1,4 +1,4 @@
-package ws.common.controller;
+package common.controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

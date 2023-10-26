@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ws.common.controller.AbstractController;
+import common.controller.AbstractController;
 import ws.member.domain.UserVO;
 import ws.shop.domain.CategoryVO;
 import ws.shop.model.ItemDAO;

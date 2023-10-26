@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ws.common.controller.AbstractController;
+import common.controller.AbstractController;
 import ws.notice.domain.NoticeVO;
 import ws.notice.model.NoticeDAO;
 import ws.notice.model.NoticeDAO_imple;

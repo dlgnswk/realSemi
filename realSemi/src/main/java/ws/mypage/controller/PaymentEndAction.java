@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ws.common.controller.AbstractController;
+import common.controller.AbstractController;
 import ws.shop.domain.OrderVO;
 import ws.user.model.UserDAO;
 import ws.user.model.UserDAO_imple;
