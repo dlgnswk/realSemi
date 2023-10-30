@@ -110,6 +110,20 @@ span.category_img{
 
 }
 
+span.category_img_select {
+	display: block;
+    white-space: nowrap;
+	padding:5px;
+	margin-bottom:15px;
+	border: 1px solid rgba(0,0,0,0);
+	box-sizing: border-box;
+	transition: border-color 0s ease;
+    /*transition-behavior: normal;*/
+    transition-duration: 0s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+	overflow: hidden;
+}
 
 h3.banner_title{
 	border:solid 0px blue;

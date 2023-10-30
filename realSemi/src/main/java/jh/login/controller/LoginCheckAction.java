@@ -1,13 +1,16 @@
 package jh.login.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.Document;
 
 import common.controller.AbstractController;
+import jh.myshop.domain.ImageVO;
 import jh.user.domain.*;
 import jh.user.model.*;
 
@@ -16,7 +19,7 @@ public class LoginCheckAction extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	/*
+	
 		String method = request.getMethod(); // "GET" 또는 "POST"	
 		
 		if(!"POST".equalsIgnoreCase(method)) {
@@ -32,7 +35,7 @@ public class LoginCheckAction extends AbstractController {
 			
 			return; // execute(HttpServletRequest request, HttpServletResponse response) 메소드 종료
 		}
-	*/	
+	
 		// POST 방식으로 넘어왔다면
 		String userid = request.getParameter("userid");
 		String pwd= request.getParameter("pwd");
@@ -78,6 +81,7 @@ public class LoginCheckAction extends AbstractController {
 			
 			session.setAttribute("loginuser", loginuser);
 			// 세션(session)에 로그인되어진 사용자 정보인 loginuser 의 키이름을 "loginuser" 로 저장시켜두는 것이다.
+			
 			
 			if (loginuser.isRequirePwdChange()) {
 				// 비밀번호를 변경한지 3개월 이상 지난 경우

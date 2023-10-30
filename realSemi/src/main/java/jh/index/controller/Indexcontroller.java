@@ -5,10 +5,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import common.controller.AbstractController;
 import jh.myshop.domain.*;
 import jh.myshop.model.*;
+import jh.user.domain.HeartVO;
+import jh.user.domain.UserVO;
+import jh.user.model.HeartDAO;
+import jh.user.model.HeartDAO_imple;
 
 
 public class Indexcontroller extends AbstractController {
@@ -18,6 +23,7 @@ public class Indexcontroller extends AbstractController {
 		
 		ImageDAO imgdao = new ImageDAO_imple();
 		CategoryDAO cadao = new CategoryDAO_imple();
+		HeartDAO hdao = new HeartDAO_imple();
 
 		try {
 			
@@ -29,6 +35,14 @@ public class Indexcontroller extends AbstractController {
 			
 			List<CategoryVO> cateImgList = cadao.categoryHeader();
 			request.setAttribute("cateImgList", cateImgList);
+
+			HttpSession session = request.getSession();
+			UserVO loginuser = (UserVO)session.getAttribute("loginuser");
+			
+			if(loginuser != null) {
+				List<HeartVO> heartList = hdao.heartUser(loginuser);
+				request.setAttribute("heartList", heartList);
+			}
 			
 			super.setRedirect(false);
 			super.setViewPage("/WEB-INF/jh/index.jsp");

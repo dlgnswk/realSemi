@@ -7,6 +7,7 @@
 
 <%
     String ctxPath = request.getContextPath();
+	//    /tempSemi
 %>
 <!DOCTYPE html>
 <%-- 헤더 시작 --%>
@@ -31,7 +32,7 @@
 <script src="<%= ctxPath %>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 <%-- header,footer 전용 js --%>
-<script src="<%= ctxPath %>/js/jh/header/tamburins_header.js" type="text/javascript"></script>
+<script src="<%= ctxPath %>/js/jh/header/header.js" type="text/javascript"></script>
 
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/jh/index/index.js"></script>
@@ -44,7 +45,7 @@
 	<%-- 네비게이션바 시작 --%>  
 	  
 	<nav class="navbar navbar-expand-lg bg-white navbar-white sticky-top ">
-	  <a class="navbar-brand" href="#"><img src="<%= ctxPath %>/images/jh/header_footer/logo.png" /></a>
+	  <a class="navbar-brand" href="<%=ctxPath%>/index.tam"><img src="<%= ctxPath %>/images/jh/header_footer/logo.png" /></a>
 	  
 	<%-- 사이드바 시작 --%>
 		<div id="side_bar_container">
@@ -52,10 +53,15 @@
 		<div class="side_bar">	
 			<div id="mySidepanel" class="sidepanel">
 			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			  <a href="">전체보기</a>
+			  <a href="<%=ctxPath%>/index.tam">전체보기</a>
 			  <a href="#">매장보기</a>
 			  <a href="#">마이페이지</a>
-			  <a href="<%=ctxPath%>/login/login.tam">로그인</a>
+			  <c:if test="${empty sessionScope.loginuser}">
+			  	<a href="<%=ctxPath%>/login/login.tam">로그인</a>
+			  </c:if>
+			  <c:if test="${not empty sessionScope.loginuser}">
+			  	<a href="<%=ctxPath%>/login/logout.tam">로그아웃</a>
+			  </c:if>
 			  <a href="#">장바구니</a>
 			</div>
 
@@ -82,7 +88,12 @@
 			     </li>
 			     
 			     <li class="nav-item active">
-			      <a class="nav-link header_footer_font" href="<%=ctxPath%>/login/login.tam">로그인</a>
+				     <c:if test="${empty sessionScope.loginuser}">
+				  		<a class="nav-link header_footer_font" href="<%=ctxPath%>/login/login.tam">로그인</a>
+					 </c:if>
+					 <c:if test="${not empty sessionScope.loginuser}">
+					  	<a class="nav-link header_footer_font" href="<%=ctxPath%>/login/logout.tam">로그아웃</a>
+					 </c:if>
 			     </li>
 			  </ul>
 			  <span><a class="nav-link header_footer_font" href="#"><img src="<%= ctxPath %>/images/jh/header_footer/cart.png" style="width:16px; height:16px;"><label>0</label></a></span>
@@ -96,19 +107,44 @@
 	<div id="category_container">
 		<ul>
 			<li id="total_view" name="total_view">
-				<a href="">
-					<span class="category_img"><img src="<%= ctxPath %>/images/jh/category/entire.png" style="width:100px; height:100px;" class="cate_img" ></span>
+				<a href="<%=ctxPath%>/index.tam">
+					<c:if test="${empty requestScope.ca_id}">
+						<span class="category_img_select">
+							<img src="<%= ctxPath %>/images/jh/category/entire.png" style="width:100px; height:100px;" class="cate_img" >
+						</span>
+					</c:if>
+					<c:if test="${not empty requestScope.ca_id}">
+						<span class="category_img">
+							<img src="<%= ctxPath %>/images/jh/category/entire.png" style="width:100px; height:100px;" class="cate_img" >
+						</span>
+					</c:if>
 					<span class="category_name header_footer_font">전체보기</span>
 				</a>
 			</li>
 			
 			<c:forEach var="caImgList" items="${requestScope.cateImgList}" varStatus="status" >
-			
 				<li id="perfume" name="perfume">
-					<a href="<%=ctxPath%>/category.tam?ca_id=${caImgList.ca_id}">
-						<span class="category_img"><img src="<%= ctxPath %>/images/jh/category/${caImgList.ca_img_file}" style="width:100px; height:100px;" class="cate_img" ></span>
-						<span class="category_name header_footer_font">${caImgList.ca_name}</span>
-					</a>
+				
+					<c:if test="${empty requestScope.ca_id}">
+						<a href="<%=ctxPath%>/category.tam?ca_id=${caImgList.ca_id}">
+							<span class="category_img"><img src="<%= ctxPath %>/images/jh/category/${caImgList.ca_img_file}" style="width:100px; height:100px;" class="cate_img" ></span>
+							<span class="category_name header_footer_font">${caImgList.ca_name}</span>
+						</a>
+					</c:if>
+					<c:if test="${not empty requestScope.ca_id}">
+						<c:if test="${caImgList.ca_id eq requestScope.ca_id}">
+							<a href="<%=ctxPath%>/category.tam?ca_id=${caImgList.ca_id}">
+								<span class="category_img_select"><img src="<%= ctxPath %>/images/jh/category/${caImgList.ca_img_file}" style="width:100px; height:100px;" class="cate_img" ></span>
+								<span class="category_name header_footer_font">${caImgList.ca_name}</span>
+							</a>
+						</c:if>
+						<c:if test="${caImgList.ca_id ne requestScope.ca_id}">
+							<a href="<%=ctxPath%>/category.tam?ca_id=${caImgList.ca_id}">
+								<span class="category_img"><img src="<%= ctxPath %>/images/jh/category/${caImgList.ca_img_file}" style="width:100px; height:100px;" class="cate_img" ></span>
+								<span class="category_name header_footer_font">${caImgList.ca_name}</span>
+							</a>
+						</c:if>
+					</c:if>
 				</li>
 				
 			</c:forEach>

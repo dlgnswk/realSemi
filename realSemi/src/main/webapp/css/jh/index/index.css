@@ -94,7 +94,8 @@
 	display: flex;
 }
 
-.dislike {
+.dislike,
+.already_dislike {
 	position: absolute;
 	background-color: rgba(0,0,0,0);
 	border: none;
@@ -105,14 +106,16 @@
 	opacity: 0;
 }
 
-.dislike > i {
+.dislike > i,
+.already_dislike > i {
 	padding: 0;
 	margin: 0;
 	width: 15px;
 	height: 15px;
 }
 
-.like {
+.like, 
+.already_like {
 	position: absolute;
 	background-color: rgba(0,0,0,0);
 	border: none;
@@ -123,14 +126,16 @@
 	opacity: 1;
 }
 
-.like > i {
+.like > i, 
+.already_like > i {
 	padding: 0;
 	margin: 0;
 	width: 15px;
 	height: 15px;
 }
 
-.click_boundary:hover .dislike {
+.click_boundary:hover .dislike,
+.click_boundary:hover .already_dislike  {
 	opacity: 0.8;
 	transition: 0.3s;
 }

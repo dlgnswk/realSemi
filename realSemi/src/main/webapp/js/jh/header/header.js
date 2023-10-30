@@ -25,6 +25,6 @@ $(document).ready(function(){
 		/*$(".cate_img").css( {'border':'1px solid rgba(0,0,0,0)','border-radius':'50%'} );*/
 	});
 	
-	
+	$("span.category_img_select").css({'border':'solid 1px black','border-radius':'50%'})
 	
 }); // end of $(document).ready(function(){}

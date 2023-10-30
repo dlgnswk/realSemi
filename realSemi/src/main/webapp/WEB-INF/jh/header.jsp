@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <%
-    String ctx_path = request.getContextPath();
+    String ctxPath = request.getContextPath();
 	//    /tempSemi
 %>
 
@@ -19,28 +19,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <%-- Bootstrap CSS --%>
-<link rel="stylesheet" href="<%= ctx_path %>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="<%= ctxPath %>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 
 <%-- Font Awesome 5 Icons --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet"  href="<%= ctx_path%>/css/font.css" type="text/css">
+<link rel="stylesheet"  href="<%= ctxPath%>/css/font.css" type="text/css">
 
 <%-- header,footer 전용 CSS --%>
-<link rel="stylesheet" href="<%= ctx_path %>/css/tamburins_header.css" type="text/css">
-
-<%-- font CSS--%>
-<link rel="stylesheet" href="<%= ctx_path%>/css/font.css" type="text/css">
+<link rel="stylesheet" href="<%= ctxPath %>/css/jh/header/header.css" type="text/css">
 
 <%-- Optional JavaScript --%>
-<script src="<%= ctx_path %>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
-<script src="<%= ctx_path %>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script src="<%= ctxPath %>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+<script src="<%= ctxPath %>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 <%-- jQueryUI CSS 및 JS --%>
-<link rel="stylesheet" type="text/css" href="<%= ctx_path%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
-<script type="text/javascript" src="<%= ctx_path%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
+<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
 
 <%-- header,footer 전용 js --%>
-<script src="<%= ctx_path %>/js/header/tamburins_header.js" type="text/javascript"></script>
+<script src="<%= ctxPath %>/js/jh/header/header.js" type="text/javascript"></script>
+
+<%-- 직접 만든 JS --%>
+<script type="text/javascript" src="<%= ctxPath%>/js/jh/index/index.js"></script>
 
 
 </head>
@@ -50,18 +50,23 @@
 	<%-- 네비게이션바 시작 --%>  
 	  
 	<nav class="navbar navbar-expand-lg bg-white navbar-white sticky-top ">
-	  <a class="navbar-brand" href="#"><img src="<%= ctx_path %>/images/header_footer/탬버린즈로고.png" /></a>
+	  <a class="navbar-brand" href="<%=ctxPath%>/index.tam"><img src="<%= ctxPath %>/images/jh/header_footer/logo.png" /></a>
 	  
 	<%-- 사이드바 시작 --%>
 		<div id="side_bar_container">
-		<span><a class="nav-link header_footer_font" href="#"><img src="<%= ctx_path %>/images/header_footer/장바구니.png" style="width:16px; height:16px;"><label>0</label></a></span>
+		<span><a class="nav-link header_footer_font" href="#"><img src="<%= ctxPath %>/images/jh/header_footer/cart.png" style="width:16px; height:16px;"><label>0</label></a></span>
 		<div class="side_bar">	
 			<div id="mySidepanel" class="sidepanel">
 			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			  <a href="#">전체보기</a>
+			  <a href="<%=ctxPath%>/index.tam">전체보기</a>
 			  <a href="#">매장보기</a>
 			  <a href="#">마이페이지</a>
-			  <a href="#">로그인</a>
+			  <c:if test="${empty sessionScope.loginuser}">
+			  	<a href="<%=ctxPath%>/login/login.tam">로그인</a>
+			  </c:if>
+			  <c:if test="${not empty sessionScope.loginuser}">
+			  	<a href="<%=ctxPath%>/login/logout.tam">로그아웃</a>
+			  </c:if>
 			  <a href="#">장바구니</a>
 			</div>
 
@@ -88,10 +93,15 @@
 			     </li>
 			     
 			     <li class="nav-item active">
-			      <a class="nav-link header_footer_font" href="#">로그인</a>
+				     <c:if test="${empty sessionScope.loginuser}">
+				  		<a class="nav-link header_footer_font" href="<%=ctxPath%>/login/login.tam">로그인</a>
+					 </c:if>
+					 <c:if test="${not empty sessionScope.loginuser}">
+					  	<a class="nav-link header_footer_font" href="<%=ctxPath%>/login/logout.tam">로그아웃</a>
+					 </c:if>
 			     </li>
 			  </ul>
-			  <span><a class="nav-link header_footer_font" href="#"><img src="<%= ctx_path %>/images/header_footer/장바구니.png" style="width:16px; height:16px;"><label>0</label></a></span>
+			  <span><a class="nav-link header_footer_font" href="#"><img src="<%= ctxPath %>/images/header_footer/장바구니.png" style="width:16px; height:16px;"><label>0</label></a></span>
 			</div> 
 	</nav>
 	<%-- 네비게이션바 끝 --%>
